@@ -162,8 +162,11 @@ void Plot::setDamp( double damping )
     for ( int i = 0; i < ArraySize; i++ )
     {
         double f = frequency[i];
+//        const ComplexNumber g =
+//            ComplexNumber( 1.0 ) / ComplexNumber( 1.0 - f * f, 2.0 * damping * f );
+
         const ComplexNumber g =
-            ComplexNumber( 1.0 ) / ComplexNumber( 1.0 - f * f, 2.0 * damping * f );
+            ComplexNumber( 1.0 ) / ComplexNumber( 1.0 - f * f, 2.0 * 0.1 * f );
 
         amplitude[i] = 20.0 * log10( qSqrt( g.real() * g.real() + g.imag() * g.imag() ) );
         phase[i] = qAtan2( g.imag(), g.real() ) * ( 180.0 / M_PI );
